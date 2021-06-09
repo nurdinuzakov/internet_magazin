@@ -34,9 +34,8 @@ class AdminController extends Controller
             throw new AccessDeniedException('Access denied');
         }
 
-        return redirect()->intended(route('my.posts.post', Auth::id()));
+        return redirect()->intended(route('admin.profile', Auth::id()));
 
-        return redirect(route(''));
     }
 
 

@@ -11,13 +11,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function loginForm()
-    {
-        return view('auth.login');
-    }
-
     public function login(Request $request)
     {
+        if ($request->isMethod('get')) {
+            return view('auth.login');
+        }
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -31,13 +30,12 @@ class AuthController extends Controller
     }
 
 
-    public function registerForm()
-    {
-        return view('auth.register-form');
-    }
-
     public function register(Request $request)
     {
+        if ($request->isMethod('get')) {
+            return view('auth.register-form');
+        }
+
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
