@@ -24,6 +24,7 @@ class AuthController extends Controller
             return redirect()->intended(route('profile', Auth::id()));
         }
 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

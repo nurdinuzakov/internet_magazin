@@ -13,8 +13,4 @@ class UserController extends Controller
     {
         return view('user.profile');
     }
-    public function homePage()
-    {
-        return view('homePage');
-    }
 }

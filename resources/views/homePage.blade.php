@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | E-Shopper</title>
 @extends('layout.app-home')
+@section('title') Home | E-Shopper @endsection
 
 @section('content')
     <section>
@@ -14,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
-                        <h2>Category</h2>
+                        <h2>Entertainment</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -123,7 +116,7 @@
                         </div><!--/category-products-->
 
                         <div class="brands_products"><!--brands_products-->
-                            <h2>Brands</h2>
+                            <h2>Education</h2>
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
@@ -153,32 +146,20 @@
                 </div>
 
                 <div class="col-sm-9 padding-right">
-                    <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
+                    <div class="features_items"><!--Category-->
+                        <h2 class="title text-center">Category</h2>
                         <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
+                            @foreach($categories as $category)
+                                <a href="{{ route('shop', ['category_id' => $category->id]) }}">
+                                <div class="product-image-wrapper">
                                     <div class="productinfo text-center">
-                                        <img src="../images/home/product1.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
+                                        <h2>Продукты питания</h2>
+                                        <img src="../images/home/food.png" alt="" />
+                                        <a href="{{ route('shop', ['category_id' => $category->id]) }}" class=""><i class="fa fa-shopping-cart"></i>See more</a>
                                     </div>
                                 </div>
-                                <div class="choose">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </a>
+                            @endforeach
                         </div>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">

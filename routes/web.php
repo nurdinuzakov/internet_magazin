@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [UserController::class, 'homePage'])->name('homePage');
+Route::get('/', [HomePageController::class, 'homePage'])->name('homePage');
 
 Route::match(['get', 'post'], '/login',[AuthController::class, 'login'])->name('login');
 Route::match(['get', 'post'], '/profile', [UserController::class, 'profile'])->name('profile');
@@ -30,4 +31,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
 
 
 //Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
+Route::get('/chernovik', [\App\Http\Controllers\BlogController::class, 'blog'])->name('blog');
+Route::get('/shop/{category_id}', [ProductController::class, 'shop'])->name('shop');
 Route::get('/product-details', [ProductController::class, 'productDetails'])->name('product.details');

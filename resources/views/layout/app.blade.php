@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-
-   @include('layout.styles')
-</head><!--/head-->
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @include('layout.styles')
+    <title>@yield('title')</title>
+</head>
 <body>
-@include('layout.nav')
+    @include('layout.nav')
 
-@yield('content')
+    @yield('content')
 
-@include('layout.footer')
-
-
-@include('layout.scripts')
+    @include('layout.footer')
+    @include('layout.scripts')
 </body>
 </html>
