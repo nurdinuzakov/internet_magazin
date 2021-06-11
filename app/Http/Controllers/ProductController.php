@@ -4,11 +4,15 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Products;
+
 class ProductController extends Controller
 {
-    public function shop($category_id)
+    public function category($category_id)
     {
-       return view('product.shop', ['category_id' => $category_id]);
+        $products = Products::where('category_id', '=', $category_id)->get();
+
+        return view('product.category', ['products' => $products]);
     }
 
     public function productDetails()
