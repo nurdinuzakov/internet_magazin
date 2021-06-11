@@ -156,30 +156,21 @@
                 <div class="product-details"><!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="../images/product-details/1.jpg" alt="" />
+                            <img src="{{ $product->images }}" alt="" />
                             <h3>ZOOM</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
-
+                        {{ dd($product->images) }}
                             <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <a href=""><img src="../images/product-details/similar1.jpg" alt=""></a>
-                                    <a href=""><img src="../images/product-details/similar2.jpg" alt=""></a>
-                                    <a href=""><img src="../images/product-details/similar3.jpg" alt=""></a>
-                                </div>
-                                <div class="item">
-                                    <a href=""><img src="../images/product-details/similar1.jpg" alt=""></a>
-                                    <a href=""><img src="../images/product-details/similar2.jpg" alt=""></a>
-                                    <a href=""><img src="../images/product-details/similar3.jpg" alt=""></a>
-                                </div>
-                                <div class="item">
-                                    <a href=""><img src="../images/product-details/similar1.jpg" alt=""></a>
-                                    <a href=""><img src="../images/product-details/similar2.jpg" alt=""></a>
-                                    <a href=""><img src="../images/product-details/similar3.jpg" alt=""></a>
-                                </div>
-
-                            </div>
+{{--                            @foreach($product->images as $image)--}}
+{{--                                <div class="carousel-inner">--}}
+{{--                                    <div class="item active">--}}
+{{--                                        <a href=""><img src="{{ asset('images/product-details/similar1.jpg') }}" alt=""></a>--}}
+{{--                                        <a href=""><img src="../images/product-details/similar2.jpg" alt=""></a>--}}
+{{--                                        <a href=""><img src="../images/product-details/similar3.jpg" alt=""></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
 
                             <!-- Controls -->
                             <a class="left item-control" href="#similar-product" data-slide="prev">
@@ -190,10 +181,11 @@
                             </a>
                         </div>
 
+
                     </div>
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
-                            <img src="../images/product-details/new.jpg" class="newarrival" alt="" />
+                            <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt="" />
                             <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
                             <p>Web ID: 1089772</p>
                             <img src="../images/product-details/rating.png" alt="" />
@@ -213,7 +205,6 @@
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->
-
                 <div class="category-tab shop-details-tab"><!--category-tab-->
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">

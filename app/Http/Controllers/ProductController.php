@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Products;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function PHPUnit\Framework\throwException;
 
 class ProductController extends Controller
 {
@@ -15,8 +17,14 @@ class ProductController extends Controller
         return view('product.category', ['products' => $products]);
     }
 
-    public function productDetails()
+    public function productDetails($product_id)
     {
-        return view('product.product-details');
+        $product = Products::find($product_id);
+
+        if(!$product){
+            throw new NotFoundHttpException('The product was\'nt found!');
+        }
+
+        return view('product.product-details', ['product' => $product]);
     }
 }
