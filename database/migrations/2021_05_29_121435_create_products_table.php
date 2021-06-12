@@ -22,11 +22,11 @@ class CreateProductsTable extends Migration
             $table->integer('category_id');
             $table->integer('quantity');
             $table->integer('price');
-            $table->integer('quantity_in_order');
+            $table->integer('quantity_in_order')->nullable();
             $table->integer('date_of_expire')->nullable();
             $table->string('images');
             $table->string('notes')->nullable();
-            $table->integer('ranking');
+            $table->integer('ranking')->default(0);
             $table->timestamps();
         });
     }
