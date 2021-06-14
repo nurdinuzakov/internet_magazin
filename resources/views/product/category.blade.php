@@ -146,7 +146,8 @@
                             <div class="price-range"><!--price-range-->
                                 <h2>Price Range</h2>
                                 <div class="well">
-                                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
+                                           data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
                                     <b>$ 0</b> <b class="pull-right">$ 600</b>
                                 </div>
                             </div><!--/price-range-->
@@ -168,16 +169,10 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img src="{{ $product->images }}" alt="" />
-                                                <h2>{{ $product->price }}</h2>
+                                                <h2>{{ $product->price }} Com</h2>
                                                 <p>{{ $product->name }}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            <div class="product-overlay">
-                                                <div class="overlay-content">
-                                                    <h2>{{ $product->price }}</h2>
-                                                    <p>{{ $product->name }}</p>
-                                                    <a href="{{ route('product.details', ['product_id' => $product->id]) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
+                                                <a href="{{ route('product.details', ['product_id' => $product->id]) }}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-shopping-cart"></i>Смотреть</a>
                                             </div>
                                         </div>
                                         <div class="choose">

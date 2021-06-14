@@ -20,13 +20,13 @@ class CategorySeeder extends Seeder
                 'description' => 'Основными продуктами питания является пища, представляющая собой доминирующую часть
                 питания в данной популяции. Большинство людей питается весьма ограниченным количеством основных продуктов
                 питания.[1]',
-                'picture' => '{{ asset("images/home/food.png") }}',
+                'picture' => '/images/home/food.png',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             ['name' => 'Мыломоющие',
             'description' => 'Моющие средства',
-            'picture' => '{{ asset("images/home/mylomoyushie.jpg") }}',
+            'picture' => '/images/home/mylomoyushie.jpg',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
             ],
