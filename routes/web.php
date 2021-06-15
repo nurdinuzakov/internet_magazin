@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
 //Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/chernovik', [\App\Http\Controllers\BlogController::class, 'blog'])->name('blog');
 Route::get('/category/{category_id}', [ProductController::class, 'category'])->name('category');
+Route::get('/subcategory/{category_id}', [ProductController::class, 'subcategory'])->name('subcategory');
 Route::get('/product-details/{product_id}', [ProductController::class, 'productDetails'])->name('product.details');
 Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 

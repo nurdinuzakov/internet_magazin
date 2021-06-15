@@ -32,6 +32,7 @@ class ProductsFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'category_id' => $this->faker->numberBetween(1,6),
+            'subcategory_id' => $this->faker->numberBetween(1,30),
             'quantity' => $this->faker->numberBetween(1, 10),
             'price' => $this->faker->numberBetween(100, 200),
             'images' => $this->faker->randomElement($images),

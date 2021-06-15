@@ -13,9 +13,9 @@ class Products extends Model
 
     public $table = 'products';
 
-    public function category()
+    public function subcategory()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasOne(Subcategory::class);
     }
 
     public function images()

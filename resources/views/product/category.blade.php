@@ -197,5 +197,8 @@
                 </div>
             </div>
         </section>
+        <span>
+            {{ $products->links() }}
+        </span>
     @endsection
 

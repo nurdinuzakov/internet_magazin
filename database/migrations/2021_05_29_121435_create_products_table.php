@@ -19,8 +19,9 @@ class CreateProductsTable extends Migration
             $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->string('name');
             $table->text('description');
-            $table->integer('category_id');
+            $table->integer('subcategory_id');
             $table->integer('quantity');
+            $table->integer('category_id');
             $table->integer('price');
             $table->integer('quantity_in_order')->nullable();
             $table->integer('date_of_expire')->nullable();
