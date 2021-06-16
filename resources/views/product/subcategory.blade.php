@@ -29,7 +29,7 @@
                         <h2 class="title text-center"></h2>
                         @foreach($subcategories as $category)
                             <div class="col-sm-4">
-                                <a href="{{ route('category', ['category_id' => $category->id]) }}">
+                                <a href="{{ route('product', ['subcategory_id' => $category->id]) }}">
                                     <div class="product-image-wrapper">
                                         <div class="productinfo text-center">
                                             <h2>{{ $category->name }}</h2>
@@ -429,8 +429,6 @@
                 </div>
             </div><!--/recommended_items-->
 
-        </div>
-        </div>
         </div>
     </section>
 @endsection

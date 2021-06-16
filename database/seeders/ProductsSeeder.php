@@ -16,7 +16,7 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        Products::factory()->count(20)->create();
+        Products::factory()->count(1000)->create();
 
 //        $faker = Factory::create();
 //

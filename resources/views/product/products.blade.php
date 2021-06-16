@@ -185,20 +185,13 @@
                                 </a>
                             </div>
                             @endforeach
-
                             <ul class="pagination">
-                                <li class="active"><a href="">1</a></li>
-                                <li><a href="">2</a></li>
-                                <li><a href="">3</a></li>
-                                <li><a href="">&raquo;</a></li>
+                                <li><a>{{ $products->links('vendor.pagination.custom') }}</a></li>
                             </ul>
                         </div><!--features_items-->
                     </div>
                 </div>
             </div>
         </section>
-        <span>
-            {{ $products->links() }}
-        </span>
     @endsection
 
