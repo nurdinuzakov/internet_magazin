@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Subcategory;
 use Database\Factories\ProductsFactory;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -16,14 +18,18 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        Products::factory()->count(1000)->create();
+        $faker = Factory::create();
 
-//        $faker = Factory::create();
-//
-//        for ($i = 0; $i < 20; $i++) {
-//            Products::create([
-//                'name' => $faker->name
-//            ]);
-//        }
+        $category_ids = Subcategory::pluck('id');
+
+        for ($i = 0; $i < 50; $i++) {
+            Products::create([
+                'name' => $faker->name(),
+                'description' => $faker->text(),
+                'subcategory_id' => $faker->randomElement($category_ids),
+                'quantity' => $faker->numberBetween(1, 10),
+                'price' => $faker->numberBetween(100, 600),
+            ]);
+        }
     }
 }

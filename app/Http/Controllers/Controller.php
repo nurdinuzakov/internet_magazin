@@ -9,5 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    const PRODUCT_PER_PAGE = 9;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

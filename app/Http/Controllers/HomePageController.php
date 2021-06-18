@@ -19,4 +19,9 @@ class HomePageController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    public function priceRange()
+    {
+        
+    }
 }

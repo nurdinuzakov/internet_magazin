@@ -30,9 +30,7 @@ class SubcategoriesSeeders extends Seeder
                 'name' => $faker->name,
                 'category_id' => $category->id,
                 'description' => $faker->text(),
-                'picture' => $faker->randomElement($images),
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'image' => $faker->randomElement($images),
             ]);
         }
     }

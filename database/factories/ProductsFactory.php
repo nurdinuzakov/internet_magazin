@@ -24,7 +24,7 @@ class ProductsFactory extends Factory
     {
         $images = [
             '/images/electronic-products/iphone12.jpg',
-            'images/home/mylomoyushie.jpg', '/images/food-products/frima.jpg',
+            '/images/home/mylomoyushie.jpg', '/images/food-products/frima.jpg',
             '/images/electronic-products/poco.jpg'
         ];
         return [
@@ -32,9 +32,11 @@ class ProductsFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'category_id' => $this->faker->numberBetween(1,6),
+            'size_id' => $this->faker->numberBetween(1,6),
+            'color_id' => $this->faker->numberBetween(1,11),
             'subcategory_id' => $this->faker->numberBetween(1,30),
             'quantity' => $this->faker->numberBetween(1, 10),
-            'price' => $this->faker->numberBetween(100, 200),
+            'price' => $this->faker->numberBetween(100, 600),
             'images' => $this->faker->randomElement($images),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')

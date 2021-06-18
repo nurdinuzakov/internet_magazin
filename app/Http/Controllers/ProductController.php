@@ -5,20 +5,23 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Products;
+use App\Models\ProductVariants;
+use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\Subcategory;
-use App\Providers\AppServiceProvider;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function PHPUnit\Framework\throwException;
 
 class ProductController extends Controller
 {
-    public function product($subcategory_id)
+    public function product(Request $request, $subcategory_id)
     {
         if(!$subcategory_id){
             throw new NotFoundHttpException('The category was\'nt found!');
         }
-        $products = Products::where('subcategory_id', '=', $subcategory_id)->paginate(9);
+        $products = Products::where('subcategory_id', '=', $subcategory_id)
+            ->whereBetween('price', [$request->get('min_price', 0), $request->get('max_price', 600)])
+            ->paginate(9);
 
         return view('product.products', compact('products'));
     }
@@ -26,6 +29,7 @@ class ProductController extends Controller
     public function productDetails($product_id)
     {
         $product = Products::find($product_id);
+        dd($product->variants()->get());
 
         if(!$product){
             throw new NotFoundHttpException('The product was\'nt found!');

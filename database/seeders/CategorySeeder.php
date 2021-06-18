@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+
 class CategorySeeder extends Seeder
 {
     /**
@@ -15,52 +18,40 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+        $faker = Factory::create();
+
         $categories = [
             ['name' => 'Продукты питания',
                 'description' => 'Основными продуктами питания является пища, представляющая собой доминирующую часть
                 питания в данной популяции. Большинство людей питается весьма ограниченным количеством основных продуктов
                 питания.[1]',
-                'picture' => '/images/home/food.png',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'image' => '/images/home/food.png',
             ],
             ['name' => 'Мыломоющие',
-            'description' => 'Моющие средства',
-            'picture' => '/images/home/mylomoyushie.jpg',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+                'description' => 'Моющие средства',
+                'image' => '/images/home/mylomoyushie.jpg',
             ],
             ['name' => 'Одежда',
-                'description' => '#',
-                'picture' => '../images/home/odejda.jpg',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'description' => $faker->sentence,
+                'image' => '/images/home/odejda.jpg',
             ],
             ['name' => 'Электроника',
-                'description' => '#',
-                'picture' => '../images/home/electronika.jpeg',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'description' => $faker->sentence,
+                'image' => '/images/home/electronika.jpeg',
             ],
             ['name' => 'Детские товары',
-                'description' => '#',
-                'picture' => '../images/home/detskie_tovary.jpg',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'description' => $faker->sentence,
+                'image' => '/images/home/detskie_tovary.jpg',
             ],
             ['name' => 'Обувь',
-                'description' => '#',
-                'picture' => '../images/home/obuv.jpg',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'description' => $faker->sentence,
+                'image' => '/images/home/obuv.jpg',
             ]
 
         ];
 
-        foreach ($categories as $category){
-            DB::table('category')->insert([
-                $category
-            ]);
+        foreach ($categories as $category) {
+            Category::create($category);
         }
     }
 }
