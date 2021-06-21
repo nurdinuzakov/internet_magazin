@@ -518,6 +518,9 @@
                 });
 
             })
+            function changeSpan() {
+                $('#addToCart').text('45');
+            }
         </script>
 @endsection
 
