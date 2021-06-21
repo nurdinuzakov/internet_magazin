@@ -199,7 +199,7 @@
 									<span>US ${{ $product->price }}</span>
 									<label>Quantity:</label>
 									<input type="text" value="{{ $product->quantity }}" />
-									<button type="button" class="btn btn-fefault cart">
+									<button type="button" class="btn btn-fefault cart" id="addToCart" value="cart" data-product-id="{{ $product->id }}">
 										<i class="fa fa-shopping-cart"></i>
 										В корзину
 									</button>
@@ -495,5 +495,29 @@
         </div>
     </div>
 </section>
+@endsection
+
+    @section('script')
+        <script>
+            $('#addToCart').on('click', function () {
+                let productId = $(this).data('product-id');
+                let route = "{{ route('add.cart', ['productId' => 'productIdToChange']) }}";
+
+                $.ajax({
+                    url: route.replace('productIdToChange', productId),
+                    type: "POST",
+                    data: {
+                        '_token': "{{ csrf_token() }}"
+                    },
+                    success: function (data) {
+                        successmessage = 'The selected item was successfully added to cart';
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+
+            })
+        </script>
 @endsection
 

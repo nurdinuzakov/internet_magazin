@@ -29,7 +29,6 @@ class ProductController extends Controller
     public function productDetails($product_id)
     {
         $product = Products::find($product_id);
-        dd($product->variants()->get());
 
         if(!$product){
             throw new NotFoundHttpException('The product was\'nt found!');
@@ -46,12 +45,8 @@ class ProductController extends Controller
             throw new NotFoundHttpException('The subcategory was\'nt found!');
         }
 
+//        return response()->json([], 500);
+
         return view('product.subcategory', ['subcategories' => $subcategories]);
-    }
-
-
-    public function cart()
-    {
-        return view('cart.cart');
     }
 }
