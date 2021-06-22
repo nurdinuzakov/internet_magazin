@@ -24,7 +24,8 @@ class ProductsFactory extends Factory
     {
         $images = [
             '/images/electronic-products/iphone12.jpg',
-            '/images/home/mylomoyushie.jpg', '/images/food-products/frima.jpg',
+            '/images/home/mylomoyushie.jpg',
+            '/images/food-products/frima.jpg',
             '/images/electronic-products/poco.jpg'
         ];
         return [

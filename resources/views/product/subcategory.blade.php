@@ -33,7 +33,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="productinfo text-center">
                                             <h2>{{ $category->name }}</h2>
-                                            <img src="{{ $category->picture }}" alt="" />
+                                            <img src="{{ $category->image }}" alt="" />
                                         </div>
                                     </div>
                                 </a>

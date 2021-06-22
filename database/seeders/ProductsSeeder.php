@@ -18,6 +18,12 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
+        $images = [
+            '/images/electronic-products/iphone12.jpg',
+            '/images/home/mylomoyushie.jpg',
+            '/images/food-products/frima.jpg',
+            '/images/electronic-products/poco.jpg'
+        ];
         $faker = Factory::create();
 
         $category_ids = Subcategory::pluck('id');
@@ -29,6 +35,7 @@ class ProductsSeeder extends Seeder
                 'subcategory_id' => $faker->randomElement($category_ids),
                 'quantity' => $faker->numberBetween(1, 10),
                 'price' => $faker->numberBetween(100, 600),
+                'images' => $faker->randomElement($images),
             ]);
         }
     }
