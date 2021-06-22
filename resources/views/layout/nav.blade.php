@@ -64,9 +64,10 @@
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart" style="font-size:24px"></i>
                                     <span id="toCart">
-                                        {{ count(session()->get('cart'))}}
+                                        {{ count(session()->get('cart', []))}}
                                     </span> Cart</a></li>
                             <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ route('register') }}"><i class="fa fa-lock"></i> Register</a></li>
                         </ul>
                     </div>
                 </div>

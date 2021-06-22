@@ -12,7 +12,8 @@ class Cart extends Controller
 
     public function cart()
     {
-        return view('cart.cart');
+        $products = session()->get('cart', []);
+        return view('cart.cart', compact('products'));
     }
 
     public function addToCart($productId)
@@ -48,7 +49,7 @@ class Cart extends Controller
             "name" => $product->name,
             "quantity" => 1,
             "price" => $product->price,
-            "photo" => $product->photo
+            "image" => $product->images
         ];
         session()->put('cart', $cart);
         return response()->json(['success' => true, 'message' => 'Product added to cart successfully!',
