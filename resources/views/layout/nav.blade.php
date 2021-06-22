@@ -63,7 +63,9 @@
                             <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart" style="font-size:24px"></i>
-                                    <span id="addToCart"> 5 </span> Cart</a></li>
+                                    <span id="toCart">
+                                        {{ count(session()->get('cart'))}}
+                                    </span> Cart</a></li>
                             <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>

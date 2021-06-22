@@ -510,7 +510,9 @@
                         '_token': "{{ csrf_token() }}"
                     },
                     success: function (data) {
-                        successmessage = 'The selected item was successfully added to cart';
+                        if (data.success) {
+                            $('#toCart').text(data.productCount);
+                        }
                     },
                     error: function () {
                         alert("Something went wrong");
@@ -518,9 +520,6 @@
                 });
 
             })
-            function changeSpan() {
-                $('#addToCart').text('45');
-            }
         </script>
 @endsection
 
