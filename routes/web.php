@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Cart;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -36,6 +36,6 @@ Route::get('/chernovik', [\App\Http\Controllers\BlogController::class, 'blog'])-
 Route::get('/product/{subcategory_id}', [ProductController::class, 'product'])->name('product');
 Route::get('/subcategory/{category_id}', [ProductController::class, 'subcategory'])->name('subcategory');
 Route::get('/product-details/{product_id}', [ProductController::class, 'productDetails'])->name('product.details');
-Route::get('/cart', [Cart::class, 'cart'])->name('cart');
-Route::match(['get', 'post'],'/add/cart/{productId}', [Cart::class, 'addToCart'])->name('add.cart');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::match(['get', 'post'],'/add/cart/{productId}', [CartController::class, 'addToCart'])->name('add.cart');
 

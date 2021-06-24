@@ -12,6 +12,6 @@ class Image extends Model
 
     public function product()
     {
-        return $this->hasOne(Products::class);
+        return $this->hasOne(Subcategory::class);
     }
 }

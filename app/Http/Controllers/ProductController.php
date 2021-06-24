@@ -32,12 +32,13 @@ class ProductController extends Controller
     {
         $product = Products::find($product_id);
         $categories = Category::all();
+        $images = Image::find($product_id);
 
         if(!$product){
             throw new NotFoundHttpException('The product was\'nt found!');
         }
 
-        return view('product.product-details', ['product' => $product, 'categories' => $categories]);
+        return view('product.product-details', ['product' => $product, 'categories' => $categories, 'images' => $images]);
     }
 
     public function subcategory($category_id)

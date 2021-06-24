@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Subcategory;
 use Database\Factories\ProductsFactory;
 use Faker\Factory;
@@ -24,19 +25,40 @@ class ProductsSeeder extends Seeder
             '/images/food-products/frima.jpg',
             '/images/electronic-products/poco.jpg'
         ];
+        $image = [
+            '/images/random-images/1.jpg',
+            '/images/random-images/2.jpg',
+            '/images/random-images/3.jpg',
+            '/images/random-images/4.jpg',
+            '/images/random-images/5.jpg',
+            '/images/random-images/6.jpg',
+            '/images/random-images/7.jpg',
+            '/images/random-images/8.jpg',
+            '/images/random-images/9.jpg',
+            '/images/random-images/10.jpg',
+        ];
         $faker = Factory::create();
 
         $category_ids = Subcategory::pluck('id');
 
-        for ($i = 0; $i < 50; $i++) {
-            Products::create([
+        for ($i = 0; $i < 30; $i++) {
+            $product = Products::create([
                 'name' => $faker->name(),
                 'description' => $faker->text(),
                 'subcategory_id' => $faker->randomElement($category_ids),
                 'quantity' => $faker->numberBetween(1, 10),
-                'price' => $faker->numberBetween(100, 600),
+                'price' => $faker->numberBetween(10, 600),
                 'images' => $faker->randomElement($images),
             ]);
+
+            for ($i = 0; $i <= rand(1, 3); $i++) {
+                Image::create([
+                    'product_id' => $product->id,
+                    'url' => $faker->randomElement($image),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+            }
         }
     }
 }

@@ -41,33 +41,33 @@
                         @endforeach
                     </div><!--/category-products-->
 
-                    <div class="brands_products"><!--brands_products-->
-                        <h2>Brands</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
-                                <li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                <li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>
-                                <li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                <li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                <li><a href=""> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                <li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
-                            </ul>
-                        </div>
-                    </div><!--/brands_products-->
+{{--                    <div class="brands_products"><!--brands_products-->--}}
+{{--                        <h2>Brands</h2>--}}
+{{--                        <div class="brands-name">--}}
+{{--                            <ul class="nav nav-pills nav-stacked">--}}
+{{--                                <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>--}}
+{{--                                <li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>--}}
+{{--                                <li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>--}}
+{{--                                <li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>--}}
+{{--                                <li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>--}}
+{{--                                <li><a href=""> <span class="pull-right">(9)</span>Boudestijn</a></li>--}}
+{{--                                <li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div><!--/brands_products-->--}}
 
-                    <div class="price-range"><!--price-range-->
-                        <h2>Price Range</h2>
-                        <div class="well">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                   data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                            <b>$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div><!--/price-range-->
+{{--                    <div class="price-range"><!--price-range-->--}}
+{{--                        <h2>Price Range</h2>--}}
+{{--                        <div class="well">--}}
+{{--                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"--}}
+{{--                                   data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />--}}
+{{--                            <b>$ 0</b> <b class="pull-right">$ 600</b>--}}
+{{--                        </div>--}}
+{{--                    </div><!--/price-range-->--}}
 
-                    <div class="shipping text-center"><!--shipping-->
-                        <img src="../images/home/shipping.jpg" alt="" />
-                    </div><!--/shipping-->
+{{--                    <div class="shipping text-center"><!--shipping-->--}}
+{{--                        <img src="../images/home/shipping.jpg" alt="" />--}}
+{{--                    </div><!--/shipping-->--}}
 
                 </div>
             </div>
@@ -123,39 +123,41 @@
 										В корзину
 									</button>
 								</span>
-{{--                            <p><b>Availability:</b> In Stock</p>--}}
-                            <p><b>Condition:</b> New</p>
-                            <p><b>Brand:</b> E-SHOPPER</p>
-                            <div class="dropdowns">
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Size chart
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">XS</a></li>
-                                        <li><a href="#">S</a></li>
-                                        <li><a href="#">M</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
-                                </div>
+                            <p><b>Availability:</b>
+                                {{ $product->quantity > 0 ? 'In stock' : 'Not available' }}
+                            </p>
+{{--                            <p><b>Condition:</b> New</p>--}}
+{{--                            <p><b>Brand:</b> E-SHOPPER</p>--}}
+{{--                            <div class="dropdowns">--}}
+{{--                                <div class="dropdown">--}}
+{{--                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Size chart--}}
+{{--                                        <span class="caret"></span></button>--}}
+{{--                                    <ul class="dropdown-menu">--}}
+{{--                                        <li><a href="#">XS</a></li>--}}
+{{--                                        <li><a href="#">S</a></li>--}}
+{{--                                        <li><a href="#">M</a></li>--}}
+{{--                                        <li><a href="#">L</a></li>--}}
+{{--                                        <li><a href="#">XL</a></li>--}}
+{{--                                        <li><a href="#">XXL</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
 
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Color chart
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Белый</a></li>
-                                        <li><a href="#">Черный</a></li>
-                                        <li><a href="#">Красный</a></li>
-                                        <li><a href="#">Оранжевый</a></li>
-                                        <li><a href="#">Желтый</a></li>
-                                        <li><a href="#">Зеленый</a></li>
-                                        <li><a href="#">Синий</a></li>
-                                        <li><a href="#">Красный</a></li>
-                                        <li><a href="#">Голубой</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+{{--                                <div class="dropdown">--}}
+{{--                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Color chart--}}
+{{--                                        <span class="caret"></span></button>--}}
+{{--                                    <ul class="dropdown-menu">--}}
+{{--                                        <li><a href="#">Белый</a></li>--}}
+{{--                                        <li><a href="#">Черный</a></li>--}}
+{{--                                        <li><a href="#">Красный</a></li>--}}
+{{--                                        <li><a href="#">Оранжевый</a></li>--}}
+{{--                                        <li><a href="#">Желтый</a></li>--}}
+{{--                                        <li><a href="#">Зеленый</a></li>--}}
+{{--                                        <li><a href="#">Синий</a></li>--}}
+{{--                                        <li><a href="#">Красный</a></li>--}}
+{{--                                        <li><a href="#">Голубой</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                         </div><!--/product-information-->
                     </div>
@@ -164,152 +166,15 @@
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
                             <li><a href="#details" data-toggle="tab">Details</a></li>
-                            <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-                            <li><a href="#tag" data-toggle="tab">Tag</a></li>
-                            <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade" id="details" >
                             <div class="col-sm-12">
-                                <p><b>About this item</b></p>
+                                <p><b>About {{$product->name}}</b></p>
                                 <p>{{ $product->description }}</p>
                             </div>
                         </div>
-
-                        <div class="tab-pane fade" id="companyprofile" >
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery1.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery3.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery2.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery4.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="tag" >
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery1.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery2.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery3.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="../images/home/gallery4.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade active in" id="reviews" >
-                            <div class="col-sm-12">
-                                <ul>
-                                    <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                    <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                    <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                                </ul>
-                                <p>{{ $product->description }}</p>
-                                <p><b>Write Your Review</b></p>
-
-                                <form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-                                    <textarea name="" ></textarea>
-                                    <button type="button" class="btn btn-default pull-right">
-                                        Submit
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-
                     </div>
                 </div><!--/category-tab-->
 

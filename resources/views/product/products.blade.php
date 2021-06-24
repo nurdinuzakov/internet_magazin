@@ -2,12 +2,6 @@
 
 @section('title') Product Details | E-Shopper @endsection
 @section('content')
-    <section id="advertisement">
-        <div class="container">
-            <img src="../images/shop/advertisement.jpg" alt="" />
-        </div>
-    </section>
-
     <section>
         <div class="container">
             <div class="row">
@@ -39,20 +33,6 @@
                                 </div>
                             @endforeach
                         </div><!--/category-products-->
-                        <div class="brands_products"><!--brands_products-->
-                            <h2>Brands</h2>
-                            <div class="brands-name">
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
-                                    <li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                    <li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>
-                                    <li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                    <li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                    <li><a href=""> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                    <li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
-                                </ul>
-                            </div>
-                        </div><!--/brands_products-->
 
                         <div class="price-range"><!--price-range-->
                             <h2>Price Range</h2>
@@ -62,11 +42,6 @@
                                 <b>$ 0</b> <b class="pull-right">$ 600</b>
                             </div>
                         </div><!--/price-range-->
-
-                        <div class="shipping text-center"><!--shipping-->
-                            <img src="../images/home/shipping.jpg" alt="" />
-                        </div><!--/shipping-->
-
                     </div>
                 </div>
 

@@ -5,43 +5,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="left-sidebar">
-                        <h2>Категории</h2>
-                        <div class="panel-group category-products" id="accordian"><!--category-products-->
-                            @foreach($categories as $category)
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordian"
-                                               href="#{{ 'category_' . $category->id }}">
-                                                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                                {{ $category->name }}
-                                            </a>
-                                        </h4>
-                                    </div>
-                                        <div id="{{'category_'. $category->id }}" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul>
-                                                    @foreach($category->subcategories()->get()  as $subcategory)
-                                                        <li><b><a href="{{ route('subcategory', ['category_id' =>
-                                                                   $category->id]) }}">{{ $subcategory->name }}</a></b></li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </div>
-                                </div>
-                            @endforeach
-                        </div><!--/category-products-->
-
-                        <div class="shipping text-center"><!--shipping-->
-                            <img src="../images/home/shipping.jpg" alt="" />
-                        </div><!--/shipping-->
-
-                    </div>
-                </div>
-
-                <div class="col-sm-9 padding-right">
+                <div class="col-sm-12 padding-right">
                     <div class="features_items"><!--Category-->
                         <h2 class="title text-center"></h2>
                             @foreach($categories as $category)
