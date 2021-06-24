@@ -56,3 +56,4 @@ class CartController extends Controller
             'productCount' => count($cart)]);
     }
 }
+https://www.scratchcode.io/increase-quantity-if-product-already-exists-in-cart/

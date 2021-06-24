@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Products;
+use Illuminate\Support\Facades\DB;
 use App\Models\ProductVariants;
 use Illuminate\Http\Request;
 use App\Models\Image;
@@ -31,14 +32,18 @@ class ProductController extends Controller
     public function productDetails($product_id)
     {
         $product = Products::find($product_id);
+        $subcategory_id = $product->subcategory_id;
+        $products = Products::where('subcategory_id', '=', $subcategory_id)->inRandomOrder()->take(15)->get()->toArray();
+
         $categories = Category::all();
-        $images = Image::find($product_id);
+        $images = DB::table('image')->where('product_id', $product_id)->pluck('url')->toArray();
 
         if(!$product){
             throw new NotFoundHttpException('The product was\'nt found!');
         }
 
-        return view('product.product-details', ['product' => $product, 'categories' => $categories, 'images' => $images]);
+        return view('product.product-details', ['product' => $product, 'products' => array_chunk($products, 3),
+            'categories' => $categories, 'images' => array_chunk($images, 3)]);
     }
 
     public function subcategory($category_id)

@@ -51,7 +51,7 @@ class ProductsSeeder extends Seeder
                 'images' => $faker->randomElement($images),
             ]);
 
-            for ($i = 0; $i <= rand(1, 3); $i++) {
+            for ($i = 0; $i <= rand(1, 9); $i++) {
                 Image::create([
                     'product_id' => $product->id,
                     'url' => $faker->randomElement($image),
