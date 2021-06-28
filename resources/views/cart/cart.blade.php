@@ -32,8 +32,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($products as $product)
-
+                                @foreach($products as $product_id => $product)
                                     <tr>
                                         <td class="cart_product">
                                             <a href=""><img src="{{ $product["image"] }}" alt="" style="width: 250px"></a>
@@ -47,13 +46,14 @@
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
-                                                <a class="cart_quantity_up" href=""> + </a>
-                                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                                <a class="cart_quantity_down" href=""> - </a>
+                                                <button class="cart_quantity_up" id="addToCart" data-product-add="{{ $product_id }}" href="" style="margin-left: 5px;"> + </button>
+                                                <input class="cart_quantity_input" type="text" name="quantity"
+                                                       id="CartQuantity" value="{{ $product['quantity'] }}" data-product-id="{{ $product_id }}"autocomplete="off" size="2">
+                                                <button class="cart_quantity_down" id="subtractFromCart" data-product-subtract="{{ $product_id }}"href="" style="margin-left: 5px;"> - </button>
                                             </div>
                                         </td>
                                         <td class="cart_total">
-                                            <p class="cart_total_price">$59</p>
+                                            <p class="cart_total_price">$ {{ $product['price'] }}</p>
                                         </td>
                                         <td class="cart_delete">
                                             <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -146,3 +146,38 @@
             </div>
         </section><!--/#do_action-->
     @endsection
+    @section('script')
+        <script>
+            $('.cart_quantity_up').on('click', function () {
+                let productId = $(this).data('product-add');
+                let productQty =   $(this).closest('.cart_quantity_button').find("input").val();
+                $('.cart_quantity_input[data-product-id="' + productId + '"]').val(parseInt(productQty)+1);
+
+                let route = "{{ route('add.subtract.cart', ['productId' => 'productIdToChange']) }}";
+
+                let productFinalQty = $(this).closest('.cart_quantity_button').find("input").val();
+
+                $.ajax({
+                    url: route.replace('productIdToChange', productId),
+                    type: "POST",
+                    data: {
+                        '_token': "{{ csrf_token() }}",
+                        productQty : productFinalQty
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            $('#toCart').text(data.productCount);
+                            alert('Product added to cart successfully!');
+                        }else{
+                            alert('The product add to cart was failed!');
+                        }
+
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+
+            })
+        </script>
+@endsection

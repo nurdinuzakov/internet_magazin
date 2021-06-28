@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -14,6 +15,21 @@ class CartController extends Controller
     {
         $products = session()->get('cart', []);
         return view('cart.cart', compact('products'));
+    }
+
+    public function addSubtractToCart(Request $request, $productId){
+
+        $cart = session()->get('cart');
+        $product = $cart[$productId];
+        $productNewQty = $request->productQty;
+//        $productChangedQty = $product[$productNewQty];
+
+        dd();
+
+
+        Session::put('cart', $cart);
+
+        return Response::json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'Cart updated.']);
     }
 
     public function addToCart($productId)

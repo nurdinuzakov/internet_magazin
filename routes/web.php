@@ -38,4 +38,5 @@ Route::get('/subcategory/{category_id}', [ProductController::class, 'subcategory
 Route::get('/product-details/{product_id}', [ProductController::class, 'productDetails'])->name('product.details');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::match(['get', 'post'],'/add/cart/{productId}', [CartController::class, 'addToCart'])->name('add.cart');
+Route::match(['get', 'post'],'/add/subtract/cart/{productId}', [CartController::class, 'addSubtractToCart'])->name('add.subtract.cart');
 
