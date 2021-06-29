@@ -19,6 +19,11 @@
                                 <li class="active">Shopping Cart</li>
                             </ol>
                         </div>
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                         <div class="table-responsive cart_info">
                             <table class="table table-condensed">
                                 <thead>
@@ -47,8 +52,7 @@
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
                                                 <button class="cart_quantity_up" id="addToCart" data-product-add="{{ $product_id }}" href="" style="margin-left: 5px;"> + </button>
-                                                <input class="cart_quantity_input" type="text" name="quantity"
-                                                       id="CartQuantity" value="{{ $product['quantity'] }}" data-product-id="{{ $product_id }}"autocomplete="off" size="2">
+                                                <input class="cart_quantity_input" type="text" name="quantity" value="{{ $product['quantity'] }}" data-product-id="{{ $product_id }}"autocomplete="off" size="2">
                                                 <button class="cart_quantity_down" id="subtractFromCart" data-product-subtract="{{ $product_id }}"href="" style="margin-left: 5px;"> - </button>
                                             </div>
                                         </td>

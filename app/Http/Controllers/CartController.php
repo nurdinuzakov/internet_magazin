@@ -20,16 +20,20 @@ class CartController extends Controller
     public function addSubtractToCart(Request $request, $productId){
 
         $cart = session()->get('cart');
-        $product = $cart[$productId];
-        $productNewQty = $request->productQty;
-//        $productChangedQty = $product[$productNewQty];
+        if (!isset($cart[$productId])) {
+            return Response::json(['success' => false, 'cart_items' => count(Session::get('cart')), 'message' => 'Product not found']);
+        }
 
-        dd();
+        $productAvailableQty = Products::find($productId)->getAttributeValue('quantity');
 
+        if ($productAvailableQty >= $request->productQty){
+            $cart[$productId]['quantity'] = $request->productQty;
+            Session::put('cart', $cart);
 
-        Session::put('cart', $cart);
+            return response()->json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'Cart updated.']);
+        }
 
-        return Response::json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'Cart updated.']);
+        return response()->json(['success' => false, 'cart_items' => count(Session::get('cart')), 'message' => 'Requested amount for product is not available']);
     }
 
     public function addToCart($productId)
