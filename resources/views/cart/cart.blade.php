@@ -19,11 +19,7 @@
                                 <li class="active">Shopping Cart</li>
                             </ol>
                         </div>
-                        @if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
-                            </div>
-                        @endif
+                        <div class="flash_message"></div>
                         <div class="table-responsive cart_info">
                             <table class="table table-condensed">
                                 <thead>
@@ -152,35 +148,65 @@
     @endsection
     @section('script')
         <script>
-            $('.cart_quantity_up').on('click', function () {
-                let productId = $(this).data('product-add');
-                let productQty =   $(this).closest('.cart_quantity_button').find("input").val();
-                $('.cart_quantity_input[data-product-id="' + productId + '"]').val(parseInt(productQty)+1);
+            $(document).ready(function () {
+                let productQty = 0;
+                $('.cart_quantity_up').on('click', function () {
+                    let productId = $(this).data('product-add');
+                    let productQty = $(this).closest('.cart_quantity_button').find("input").val();
+                    $('.cart_quantity_input[data-product-id="' + productId + '"]').val(parseInt(productQty)+1);
 
-                let route = "{{ route('add.subtract.cart', ['productId' => 'productIdToChange']) }}";
+                    ajaxQuery();
 
-                let productFinalQty = $(this).closest('.cart_quantity_button').find("input").val();
+                })
 
-                $.ajax({
-                    url: route.replace('productIdToChange', productId),
-                    type: "POST",
-                    data: {
-                        '_token': "{{ csrf_token() }}",
-                        productQty : productFinalQty
-                    },
-                    success: function (data) {
-                        if (data.success) {
-                            $('#toCart').text(data.productCount);
-                            alert('Product added to cart successfully!');
-                        }else{
-                            alert('The product add to cart was failed!');
-                        }
+                $('.cart_quantity_down').on('click', function () {
+                    let productId = $(this).data('product-subtract');
+                    let productQty = $(this).closest('.cart_quantity_button').find("input").val();
 
-                    },
-                    error: function () {
-                        alert("Something went wrong");
+                    if (productQty > 0) {
+                        $('.cart_quantity_input[data-product-id="' + productId + '"]').val(parseInt(productQty)-1);
                     }
-                });
+
+                    ajaxQuery();
+
+                })
+
+
+
+                    let ajaxQuery = function(){
+                        let productId = $(this).data('product-add');
+                        console.log(productId)
+                        let productFinalQty = $(this).closest('.cart_quantity_button').find("input").val();
+                        console.log(productFinalQty)
+                        let route = "{{ route('add.subtract.cart', ['productId' => 'productIdToChange']) }}";
+
+                        $.ajax({
+                            url: route.replace('productIdToChange', productId),
+                            type: "POST",
+                            data: {
+                                '_token': "{{ csrf_token() }}",
+                                productQty : productFinalQty
+                            },
+                            success: function (data) {
+                                if (data.success) {
+                                    $('#toCart').text(data.productCount);
+                                }
+                                let message = '<div class="alert alert-info message1" style="display: none">\n' +
+                                    '                            <strong id="message">'+ data.message +'</strong>\n' +
+                                    '                        </div>'
+                                $('.flash_message').append(message);
+                                $(".message1").show(500);
+                                setTimeout(function () {
+                                    $(".message1").hide(500, function () {
+                                        $(".message1").remove();
+                                    });
+                                }, 5000)
+                            },
+                            error: function () {
+                                alert("Something went wrong");
+                            }
+                        });
+                    }
 
             })
         </script>

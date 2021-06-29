@@ -21,7 +21,7 @@ class CartController extends Controller
 
         $cart = session()->get('cart');
         if (!isset($cart[$productId])) {
-            return Response::json(['success' => false, 'cart_items' => count(Session::get('cart')), 'message' => 'Product not found']);
+            return response()->json(['success' => false, 'cart_items' => count(Session::get('cart')), 'message' => 'Product not found']);
         }
 
         $productAvailableQty = Products::find($productId)->getAttributeValue('quantity');
@@ -30,7 +30,7 @@ class CartController extends Controller
             $cart[$productId]['quantity'] = $request->productQty;
             Session::put('cart', $cart);
 
-            return response()->json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'Cart updated.']);
+            return response()->json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'The product was added to Cart']);
         }
 
         return response()->json(['success' => false, 'cart_items' => count(Session::get('cart')), 'message' => 'Requested amount for product is not available']);
