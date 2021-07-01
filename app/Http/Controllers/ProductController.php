@@ -58,4 +58,11 @@ class ProductController extends Controller
 
         return view('product.subcategory', ['subcategories' => $subcategories]);
     }
+
+    public function adminProductTable()
+    {
+        $products = Products::paginate(15);
+
+        return view('admin.product-table', ['products' => $products]);
+    }
 }

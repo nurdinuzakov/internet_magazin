@@ -24,6 +24,10 @@ Route::match(['get', 'post'], '/login',[AuthController::class, 'login'])->name('
 Route::match(['get', 'post'], '/profile', [UserController::class, 'profile'])->name('profile');
 Route::match(['get', 'post'],'/register', [AuthController::class, 'register'])->name('register');
 
+
+Route::get('/product-table', [ProductController::class, 'adminProductTable'])->name('product.table');
+Route::get('/subcategory-table', [AdminController::class, 'subcategoryTable'])->name('subcategory.table');
+Route::get('/category-table', [AdminController::class, 'categoryTable'])->name('category.table');
 Route::match(['get', 'post'],'/admin/login',[AdminController::class, 'login'])->name('admin.login');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
     Route::get('/', [AdminController::class, 'adminProfile'])->name('admin.profile');

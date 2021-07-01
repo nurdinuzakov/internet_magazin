@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
@@ -13,7 +15,12 @@ class AdminController extends Controller
 {
     public function adminProfile()
     {
-        return view('admin.admin');
+        $categories = Category::all();
+//        dd($categories[0]->subcategories()->get());
+
+        return view('admin.admin', [
+            'categories' => $categories
+        ]);
     }
 
     public function login(Request $request)
@@ -34,6 +41,9 @@ class AdminController extends Controller
             throw new AccessDeniedException('Access denied');
         }
 
+
+
+
         return redirect()->intended(route('admin.profile', Auth::id()));
 
     }
@@ -42,6 +52,20 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect(route('admin.login.form'));
+        return redirect(route('admin.login'));
+    }
+
+    public function subcategoryTable()
+    {
+        $subcategories = Subcategory::paginate(15);
+
+        return view('admin.subcategories-table', ['subcategories' => $subcategories]);
+    }
+
+    public function categoryTable()
+    {
+        $categories = Category::all();
+
+        return view('admin.categories-table', ['categories' => $categories]);
     }
 }

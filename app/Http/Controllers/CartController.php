@@ -30,7 +30,7 @@ class CartController extends Controller
             $cart[$productId]['quantity'] = $request->productQty;
             Session::put('cart', $cart);
 
-            return response()->json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'The product was added to Cart']);
+            return response()->json(['success' => true, 'cart_items' => count(Session::get('cart')), 'message' => 'The quantity was changed successfully!']);
         }
 
         return response()->json(['success' => false, 'cart_items' => count(Session::get('cart')), 'message' => 'Requested amount for product is not available']);

@@ -25,7 +25,7 @@
                                 <thead>
                                 <tr class="cart_menu">
                                     <td class="image">Item</td>
-                                    <td class="description">Description</td>
+                                    <td class="description">Name</td>
                                     <td class="price">Price</td>
                                     <td class="quantity">Quantity</td>
                                     <td class="total">Total</td>
@@ -43,7 +43,7 @@
                                             <p>Web ID: 1089772</p>
                                         </td>
                                         <td class="cart_price">
-                                            <p>$ {{ $product['price'] }}</p>
+                                            <p id="product-price">$ {{ $product['price'] }}</p>
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
@@ -53,7 +53,7 @@
                                             </div>
                                         </td>
                                         <td class="cart_total">
-                                            <p class="cart_total_price">$ {{ $product['price'] }}</p>
+                                            <p class="cart_total_price">$ {{ $product['quantity'] * $product['price'] }}</p>
                                         </td>
                                         <td class="cart_delete">
                                             <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -149,13 +149,15 @@
     @section('script')
         <script>
             $(document).ready(function () {
-                let productQty = 0;
                 $('.cart_quantity_up').on('click', function () {
                     let productId = $(this).data('product-add');
                     let productQty = $(this).closest('.cart_quantity_button').find("input").val();
                     $('.cart_quantity_input[data-product-id="' + productId + '"]').val(parseInt(productQty)+1);
 
-                    ajaxQuery();
+                    let productFinalQty = $(this).closest('.cart_quantity_button').find("input").val();
+
+                    ajaxQuery(productId, productFinalQty);
+                    // totalAmount(productFinalQty);
 
                 })
 
@@ -163,21 +165,26 @@
                     let productId = $(this).data('product-subtract');
                     let productQty = $(this).closest('.cart_quantity_button').find("input").val();
 
+
                     if (productQty > 0) {
                         $('.cart_quantity_input[data-product-id="' + productId + '"]').val(parseInt(productQty)-1);
                     }
 
-                    ajaxQuery();
+                    let productFinalQty = $(this).closest('.cart_quantity_button').find("input").val();
+
+                    ajaxQuery(productId, productFinalQty);
+                    // totalAmount(productFinalQty);
 
                 })
+                    // let totalAmount = function(productFinalQty){
+                    //     console.log($('#product-price').text())
+                    //     // productFinalQty * $('#product-price').val();
+                    // }
 
 
+                    let ajaxQuery = function(productId, productFinalQty){
 
-                    let ajaxQuery = function(){
-                        let productId = $(this).data('product-add');
-                        console.log(productId)
-                        let productFinalQty = $(this).closest('.cart_quantity_button').find("input").val();
-                        console.log(productFinalQty)
+
                         let route = "{{ route('add.subtract.cart', ['productId' => 'productIdToChange']) }}";
 
                         $.ajax({

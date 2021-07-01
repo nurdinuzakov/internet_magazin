@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('profile', Auth::id()));
+            return redirect()->intended(route('homePage', Auth::id()));
         }
 
 
@@ -55,6 +55,6 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('profile'));
+        return redirect(route('homePage'));
     }
 }
