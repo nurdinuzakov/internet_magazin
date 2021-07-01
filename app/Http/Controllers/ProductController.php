@@ -65,4 +65,9 @@ class ProductController extends Controller
 
         return view('admin.product-table', ['products' => $products]);
     }
+
+    public function productInput()
+    {
+        return view('admin.product-input');
+    }
 }

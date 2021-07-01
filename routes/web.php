@@ -26,6 +26,7 @@ Route::match(['get', 'post'],'/register', [AuthController::class, 'register'])->
 
 
 Route::get('/product-table', [ProductController::class, 'adminProductTable'])->name('product.table');
+Route::get('/product-input', [ProductController::class, 'productInput'])->name('product.table');
 Route::get('/subcategory-table', [AdminController::class, 'subcategoryTable'])->name('subcategory.table');
 Route::get('/category-table', [AdminController::class, 'categoryTable'])->name('category.table');
 Route::match(['get', 'post'],'/admin/login',[AdminController::class, 'login'])->name('admin.login');
